@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="PagesApp">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Do you love Bootstrap's grid but waste a lot of time modifying everything else?">
 <meta name="author" content="">
 <link rel="icon" href="#">
-<title>Wow Framework for Developers - Simple, Light, Effective</title>
+<title>Sherlock</title>
 
 <!-- Font Awesome CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -22,6 +22,22 @@
 <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic,700italic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+<!--<script src="/bower_components/angular-route/angular-route.js"></script>-->
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/showdown/src/showdown.js"></script>
+    <script src="bower_components/angular-markdown-directive/markdown.js"></script>
+
+<script src="js/app.module.js"></script>
+<script src="js/controllers/mainCtrl.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -30,7 +46,7 @@
     <![endif]-->
 
 </head>
-<body class="stickybody">
+<body  class="stickybody">
 
 <!-- HEADER -->
 <div class="header-wrapper sticky">
@@ -52,35 +68,7 @@
 
 <!-- SITE CONTENT -->
 
-<div style="margin-top:5%" class="container intro">
-	<div class="row">
-		<div class="c3"></div>
-		<div class="c9">
-				<h1>SherLock</h1>
-		</div>
-	</div>
-	<div class="row">
-		<div style="display: flex;" class="c3">
-				<img style="margin: auto;" src="assets/img/SherLock_logo.png"/>
-		</div>
-		<div class="c9">
-
-			<div class="row markdown-body">
-				<div class="c12">
-					<code class="JavaScript syntax highlighting">
-							var x = x+1;
-					</code>
-<p>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel purus purus. Vivamus consectetur tincidunt augue, et aliquet sapien pharetra semper. Nullam laoreet eleifend posuere. Aenean maximus consequat urna, a scelerisque lacus sollicitudin eget. Nullam vel dui tincidunt, vestibulum lorem eget, porta massa. Pellentesque at nisl ante. Nullam magna magna, porttitor et efficitur vitae, scelerisque in lectus. Integer a auctor nisl. Phasellus imperdiet orci consequat iaculis tincidunt. Donec eget hendrerit leo. Nullam id est massa. Proin fringilla felis at sodales hendrerit.
-</p><p>
-Integer varius egestas tortor ac posuere. Donec eget tortor nec dui ultricies sodales. Nullam at odio in nibh pretium laoreet nec non eros. Mauris imperdiet placerat dapibus. Phasellus molestie nec velit in facilisis. Nam consequat dolor vel sapien rhoncus tempus. Vestibulum ultrices non orci nec tempus. Praesent ac fringilla ligula. Mauris finibus feugiat sapien in bibendum. Vestibulum consequat luctus velit egestas tincidunt. Praesent iaculis nulla ac nisl aliquet, at ornare quam tempus. In non dui in tortor mollis hendrerit nec a diam. Duis eu leo sagittis, iaculis sapien ut, blandit dolor. Morbi venenatis congue tortor vel tristique. Nam convallis nisi vitae dolor ornare, vel pretium ipsum pellentesque. Donec suscipit tortor ex, in vulputate dolor porttitor vulputate.
-</p><p>
-Donec sodales tellus id dui maximus dapibus. Sed accumsan nisi eu lorem fermentum, nec porttitor neque ornare. In ultricies tincidunt risus, ac elementum eros suscipit sit amet. Curabitur luctus facilisis hendrerit. Nulla tincidunt lacus eget dolor pretium hendrerit. Integer vulputate neque quam, id mollis ex malesuada eget. Proin efficitur dui eget magna condimentum pulvinar. Morbi in laoreet risus. Curabitur et malesuada lorem, id maximus mauris. Morbi leo felis, ultrices nec consequat ornare, ultrices at lectus.</p>
-		</div>
-	</div>
-	</div>
-	</div>
-</div>
+	 <div ng-view></div>
 <!-- SITE CONTENT -->
 
 

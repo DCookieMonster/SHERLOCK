@@ -1,0 +1,150 @@
+<div style="margin-top:5%" class="container intro">
+    <div class="row">
+        <div class="c12">
+            <h1>SherLock</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="c3">
+            <img src="assets/img/SherLock_logo.png"/>
+        </div>
+        <div class="c9">
+
+            <div class="row markdown-body">
+                <div class="c12">
+                    <p>
+                        Today smartphones are ubiquitous, serving as a mobile mechanism for centralizing one's private information, accounts, contacts, and communication services. Given this, over the years smartphones have become an attractive target for cyber-attacks.
+                        Trojans are malicious applications that look legitimate. Users of Android devices do not always carefully review or understand app permissions during installation, enabling trojans to be installed and gain access to sensitive resources, even without
+                        exploiting vulnerabilities.
+                    </p>
+                    <p>
+                        To assist security researchers and data scientists alike, the BGU Cyber Security Research Center has performed a multi-year data collection experiment as part of a research project with the Israeli Ministry of Space and Technology. The objective of
+                        the data collection experiment is to provide security researchers access to a labeled dataset containing a wide variety of low-privileged monitorable smartphone features that capture both regular usage and cyber-attacks. The dataset, called the
+                        “SherLock Dataset” contains billions of data records collected from 50 volunteers over a few years. The labels were created by having the volunteers run applications infected with malware -based on real malwares found in the wild.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row markdown-body">
+        <div class="c12">
+            <h2>
+                What kind of data are we talking about?
+            </h2>
+            <p>
+                The dataset is essentially a massive time-series dataset spanning nearly every single kind of software and hardware sensor that can be sampled from a Samsung Galaxy S5 smartphone, without root privileges. The dataset contains over 600 billion data
+                points in over 10 billion data records. Some examples of the sampled sensors are:
+            </p>
+            <ul>
+                <li>
+                    Resource utilization per running App (CPU, memory, …)
+                </li>
+                <li>
+                    Call/SMS logs
+                </li>
+                <li>
+                    Location
+                </li>
+                <li>
+                    WiFi Signal strength
+                </li>
+                <li>
+                    Network statistics
+                </li>
+                <li>
+                    And many more… (see the dataset description here)
+
+                </li>
+            </ul>
+            <p>
+
+                These sensors where sampled as a rate rivaling other similar datasets, some features sampled at a rate of up to once every second! More interestingly, we provide explicit labels (timestamps + descriptions) which capture exactly when malware on the
+                device is performing its malicious activities. With these labels, you can use the dataset as a benchmark for your machine learning algorithms.
+            </p>
+            <p>
+                It is important to note that the SherLock dataset is not only useful to cybersecurity researchers, but all researchers. The dataset can be used for event prediction, recommender systems, behavioral analysis, and more!
+            </p>
+        </div>
+    </div>
+    <div class="row markdown-body">
+        <div class="c12">
+            <h2>
+                Okay, so why is the dataset called “SherLock”?
+            </h2>
+            <p>
+                In order to collect the data from our volunteers, along with the explicitly malware activity labels, we developed two smartphone agents: SherLock and Moriarty. Inspired by Sir Arthur Conan Doyle’s stories from 1893, Sherlock is a detective out in the
+                field collecting clues to solve crimes. Moriarty, Sherlock’s nemesis, orchestrates crimes –but teases Sherlock by leaving clues which indicate Moriarty’s activities.
+            </p>
+            <p>
+                The SherLock data collection agent is based on the Google Funf framework. It collects an immense amount of data which captures the smartphone’s internal and external environment. Most of the data may not relevant to detecting Moriarty, thus deduction
+                and machine learning algorithms must be used.
+            </p>
+            <p>
+                The Moriarty malicious agent perpetrates attacks on the user's device while creating labels for the SherLock dataset. The attacks perpetrated by Moriarty are based on the following attack model: (1) A benign application is either initially given or
+                repackaged to include additional code (spyware or some other malware). (2) The victim installs the app from a marketplace without realizing the consequences of the requested permissions. Given this model, we note that Moriarty does not need to
+                exploit vulnerabilities on the device in order to perform its malicious activities. In terms of its framework, Moriarty is a benign application to which a malicious behavior has been added, for example, a puzzle game that steals the user's contacts.
+                Every few weeks Moriarty is updated to a new version (app + behavior) via the Google Play store. If the user forgets to use the Moriarty application for three days, then SherLock reminds the user to do so. For ethical reasons, each version of
+                Moriarty does not contain actual malware code from the wild but rather contains a behavioral copy of a malware sample found in the wild. A full list of Moriarty version and respective malicious behaviors can be found here.
+
+            </p>
+        </div>
+    </div>
+    <div class="row markdown-body">
+        <div class="c12 text-center">
+            <img src="assets/img/main_1.png"/>
+        </div>
+    </div>
+    <div class="row markdown-body">
+        <div class="c12">
+            <h2>
+                What can I do with this data?
+            </h2>
+            <p>
+                The following are some ideas for using the SherLock dataset for cybersecurity research: Malware Detection & App Profiling. The dataset can be used to detect malware and profile applications via implicit application activity (network traffic,
+                CPU/memory utilization, etc.). Moreover, the dataset has many contextual features (such as the device's location, motion, and battery consumption) that can be used to improve the recognition of malicious intents. With regard to malware samples in the
+                dataset, researchers have two options: (1) each version of Moriarty can be analyzed as a different type of malicious application (i.e., spyware, adware, etc.), or (2) the hash values of installed applications' APKs can be used to detect real malware
+                on the volunteer's devices. The hash values are provided by the App Package probe whenever the application is installed or updated, and
+                <a href="https://virustotal.com/" target="_blank">VirusTotal</a>
+                can be used to map the hashes to known malware. We found that 3.5% of applications on our volunteers' devices had a virus signature, and ~1% had at least three positive detections from different anti-virus solutions.
+            </p>
+            <p>
+              <b>Malware Analysis.</b> With the APK hashes and version of Moriarty, it is possible to use the dataset to analyze the impact different malwares have on the device. Specifically, it is possible to see what low-privileged monitorable features are affected (and when) by the malware's activities. This analysis may be used to help develop an efficient way of detecting malicious behaviors from low-privileged  monitorable features, obtainable without root privileges.
+</p><p><b>Continuous User Authentication.</b> The dataset can be used to develop continuous authentication algorithms. This is because each volunteer participates in the experiment for over a year, an thus the data presents the inherent challenges: concept drifts, behavioral noise, and false positives when the device is shared with others. Researchers can use the dataset for this task in one of two ways: (1) by using the labeled data from Moriarty v10 in which the volunteers participate in simulated device thefts, or (2) by slicing a volunteer's data at one point, and then attaching another volunteer's data as the continuation.
+</p><p><b>Context-based Security.</b> The dataset can be used to derive the general context of the user and his/her device, as well as the specific contexts in which events are performed. These contexts can be used to implement and evaluate different context-based security mechanisms. Moreover, the contexts may also be extracted as a rule-set as a means of improving resource access control (i.e., only allowing applications to access certain resources under acceptable pre-defined contexts).
+</p><p><b>Security Related Statistics.</b> The dataset can be used to derive security-related statistics. For example, a score that reflects a user's security awareness can be computed based on the user's WiFi usage patterns, installed applications (possibly malware) and their permissions, and the user's general behavior. Each volunteer completed a survey which included 45 security-awareness questions. The survey responses can be used to confirm the calculation of these scores or contribute to their calculation.
+</p><p><b>Feature Monitoring & Extraction.</b> The dataset contains data sampled at a relatively fast rate (with respect to the limitations of the modern smartphone). Thus, researchers who are investigating security algorithms can also consider the trade-off between sample rates (more power consumption) and accuracy. Furthermore, feature selection can be performed to reveal the best features for a particular problem, or to provide an analysis of an application or user's behavior.
+</p><p>Note that the SherLock dataset can be used for research in domains that are not strictly security related. For example, context aware recommender systems, event prediction, user personalization and awareness, location prediction, and more. The dataset also offers opportunities that aren't available in other datasets. It is also important to note that neither root privileges nor changes to the Android OS are required to monitor the features found in the SherLock dataset (as of Android 5.0). Therefore, solutions based on this data are applicable and accessible to a large portion of the Android device population.
+</p>
+        </div>
+    </div>
+    <div class="row markdown-body">
+        <div class="c12">
+            <h2>
+How can I get a copy of the dataset and documentation?
+            </h2>
+            <p>
+              The dataset is freely avalaible for all researchers to download. A free sample of the dataset can be downloaded here. However, in order to receive the full dataset, we need to make sure that you respect the volunteer’s privacy, and agree not to attempt to de-anonymize any of our volunteer’s identities. Therefore, you will be required to sign a terms and conditions agreement in order to receive a license to the full dataset. For more details, please go here.
+            </p>
+            <ul>
+                <li>
+Dataset Description
+                </li>
+                <li>
+Source Code (SherLock and Moriarty)
+                </li>
+                <li>
+The Dataset
+                </li>
+                <li>
+Academic paper: <br>
+9th ACM Workshop on Artificial Intelligence and Security (AISec) with the 23nd ACM Conference on Computer and Communications (CCS)<br>
+SherLock vs Moriarty: A Smartphone Dataset for Cybersecurity Research
+
+
+                </li>
+
+            </ul>
+            
+        </div>
+    </div>
+</div>
