@@ -1,0 +1,87 @@
+<style>
+
+.clear{
+  padding-top: 5%;
+}
+</style>
+<div style="margin-top:5%" class="container intro">
+    <div class="row clear">
+        <div class="c12">
+          <h1> The Smartphone Agents </h1>
+        </div>
+    </div>
+
+      <div class="row  markdown-body">
+          <div class="c12">
+            <h2> SherLock</h2>
+          </div>
+          <div class="c12">
+            <p>
+<b>Framework.</b> The SherLock data collection agent is based on the <a href="http://funf.org/" target="_blank">Google Funf</a> framework. The Funf Open Sensing Framework is an extensible sensing and data processing framework for mobile devices, developed by the MIT Media Lab. Funf was not designed for intense frequent feature monitoring, such as computing statistics on motion sensors. Therefore, we had to make modifications to the framework's processing pipeline in order to improve stability and reliability. Moreover, we added probes to the framework, such as a probe that collects statistics on all running applications. The source code for the SherLock agent, along with its modifications and its complete version history, is available online with the dataset.
+            </p>
+          </div>
+
+      </div>
+
+      <div class="row  markdown-body">
+
+          <div class="c12">
+            <p>
+In the Funf framework, monitorable features are referred to as sensors. Funf allows for developers to define groupings of sensors such that they will be sampled together at roughly the same time. These defined groupings are referred to as probes. A probe is activated (sampled) according to a configuration provided to the Funf's scheduler. For example, a probe that senses motion can be triggered once every five seconds or whenever some specific event occurs (e.g., the press of the home button). Sensors can retrieve data from either physical or virtual sources (e.g., external temperature or memory consumption). In general, there are two types of sensors: PUSH and PULL. PUSH sensors are event-based, such as sensing when an SMS arrives or when the screen is turned on. PULL sensors are collected periodically, such as by sampling the CPU utilization or the device's acceleration.
+            </p>
+          </div>
+          <div class="c12">
+            <p>
+              The data collected by SherLock is stored temporarily on the volunteer's device as a text file in JSON format. Once the file reaches 500MB, it is zipped to ~50MB. Eventually, once the user connects to WiFi, all of the zip files temporarily stored on the device are uploaded to our server.
+</p>
+</div>
+      </div>
+
+
+            <div class="row  markdown-body">
+
+                <div class="c12">
+                  <p>
+<b>Probes.</b> SherLock has seven probes for the PUSH sensors and five probes for the PULL sensors, described in Tables \ref{tab:D_PUSH} and \ref{tab:D_PULL} below. Overall, there are many sensors divided amongst just a few probes. The probes were planned this way in order to fuse as many sensor records as possible to individual timestamps. This approach is advantageous when dealing with a large time series datasets because it minimizes the number of JOIN operations required on the final database when producing datasets.
+                  </p>
+                </div>
+                <div class="c12">
+                  <p>
+The most frequently sampled PULL probe is T4, sampled once every five seconds. Each time the T4 probe is triggered, three software sensors are sampled. One sensor collects global features on the device's utilization and statistics down to the Linux level. The second collects statistics and Linux level features from each running application. The third collects features regarding the battery and power consumption. The Linux level features are obtained from the Linux virtual /proc directory which is accessible on unrooted Android phones. The information collected by T4's three sensors can be found in Table \ref{tab:D_T4} below.
+      </p>
+      </div>
+            </div>
+
+
+            <div class="row  markdown-body">
+                <div class="c12">
+                  <h2> Moriarty</h2>
+                </div>
+                <div class="c12">
+                  <p>
+<b>Framework.</b> Moriarty is an agent that perpetrates attacks on the user's device while creating labels for the SherLock dataset. The attacks perpetrated by Moriarty are based on the following attack model: (1) A benign application is either initially given or repackaged to include additional code (spyware or some other malware). (2) The victim installs the app from a marketplace without realizing the consequences of the requested permissions. Given this model, we note that Moriarty does not need to exploit vulnerabilities on the device in order to perform its malicious activities.
+                  </p>
+                </div>
+
+            </div>
+
+            <div class="row  markdown-body">
+
+                <div class="c12">
+                  <p>
+In terms of its framework, Moriarty is a benign application to which a malicious behavior has been added, for example, a puzzle game that steals the user's contacts. Every few weeks Moriarty is updated to a new version (app + behavior) via the Google Play store. If the user forgets to use the Moriarty application for three days, then SherLock reminds the user to do so. For ethical reasons, each version of Moriarty does not contain actual malware code from the wild but rather contains a behavioral copy of a malware sample found in the wild. In order to protect the volunteer's privacy, all data sent by Moriarty over the Internet is scrambled (corrupted) before transmission.
+                  </p>
+                </div>
+                <div class="c12">
+                  <p>
+All volunteers were required to open and use Moriarty once every few days.
+      </p>
+      </div>
+      <div class="c12">
+        <p>
+Table \ref{tab:MoriartyVers} presents the versions of Moriarty that have been released so far. The table also lists the malwares taken from the wild on which each version is based. In total, there will be at least 12 versions of Moriarty by the end of 2016. Note that v10 does not follow the attack model since it is an experiment platform for capturing device theft behaviors. In that version the volunteer has a friend “steal” and use the in various manners. The labels recorded by Moriarty in this version indicate the moment the device was stolen.
+</p>
+</div>
+            </div>
+
+    </div>

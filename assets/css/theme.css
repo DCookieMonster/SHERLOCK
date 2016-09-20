@@ -60,3 +60,49 @@ top: 0;
 	background-size:cover;
 	-o-background-size:cover;
 }
+
+.btnghost {
+	border:2px solid #333;
+	background-color:transparent;
+	padding:15px 20px;
+	letter-spacing:3px;
+	font-size:12px;
+	text-transform:uppercase;
+	font-weight:400;
+	color:#333;
+	margin-top:20px;
+	display:inline-block;
+}
+.btnghost:hover {
+	background-color:#333;
+	color:#fff;
+	border:2px solid #333;
+}
+.btn {
+	border-radius:0;
+	text-transform:uppercase;
+	font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight:400;
+	-webkit-transition:all .3s ease-in-out;
+	-moz-transition:all .3s ease-in-out;
+	transition:all .3s ease-in-out;
+}
+.btn-default {
+	border:1px solid #42dca3;
+	color:#42dca3;
+	background-color:transparent;
+}
+.btn-default:hover,.btn-default:focus {
+	border:1px solid #42dca3;
+	outline:0;
+	color:#000;
+	background-color:#42dca3;
+}
+
+a.btn.btnghost.btn-lg {
+    color: #000;
+}
+
+a.btn.btnghost.btn-lg:hover {
+    color: #fff;
+}

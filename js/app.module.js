@@ -15,7 +15,18 @@ PagesApp.config(['$routeProvider', '$locationProvider',
             templateUrl: 'pages/main.html',
             controller: 'mainCtrl'
         }).
-
+        when('/team', {
+            templateUrl: 'pages/team.html',
+            controller: 'teamCtrl'
+        }).
+        when('/dataset', {
+            templateUrl: 'pages/dataset.html',
+            controller: 'datasetCtrl'
+        }).
+        when('/download', {
+            templateUrl: 'pages/download.html',
+            controller: 'downloadCtrl'
+        }).
         otherwise({
             redirectTo: '/'
         });
