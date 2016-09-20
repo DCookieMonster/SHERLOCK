@@ -1,87 +1,386 @@
 <style>
 
-.clear{
-  padding-top: 5%;
-}
+    .clear {
+        padding-top: 5%;
+    }
+
 </style>
 <div style="margin-top:5%" class="container intro">
     <div class="row clear">
         <div class="c12">
-          <h1> The Smartphone Agents </h1>
+            <h1>
+                The Smartphone Agents
+            </h1>
         </div>
     </div>
 
-      <div class="row  markdown-body">
-          <div class="c12">
-            <h2> SherLock</h2>
-          </div>
-          <div class="c12">
+    <div class="row  markdown-body">
+        <div class="c12">
+            <h2>
+                SherLock</h2>
+        </div>
+        <div class="c12">
             <p>
-<b>Framework.</b> The SherLock data collection agent is based on the <a href="http://funf.org/" target="_blank">Google Funf</a> framework. The Funf Open Sensing Framework is an extensible sensing and data processing framework for mobile devices, developed by the MIT Media Lab. Funf was not designed for intense frequent feature monitoring, such as computing statistics on motion sensors. Therefore, we had to make modifications to the framework's processing pipeline in order to improve stability and reliability. Moreover, we added probes to the framework, such as a probe that collects statistics on all running applications. The source code for the SherLock agent, along with its modifications and its complete version history, is available online with the dataset.
+                <b>Framework.</b>
+                The SherLock data collection agent is based on the
+                <a href="http://funf.org/" target="_blank">Google Funf</a>
+                framework. The Funf Open Sensing Framework is an extensible sensing and data processing framework for mobile devices, developed by the MIT Media Lab. Funf was not designed for intense frequent feature monitoring, such as computing statistics on
+                motion sensors. Therefore, we had to make modifications to the framework's processing pipeline in order to improve stability and reliability. Moreover, we added probes to the framework, such as a probe that collects statistics on all running
+                applications. The source code for the SherLock agent, along with its modifications and its complete version history, is available online with the dataset.
             </p>
-          </div>
-
-      </div>
-
-      <div class="row  markdown-body">
-
-          <div class="c12">
-            <p>
-In the Funf framework, monitorable features are referred to as sensors. Funf allows for developers to define groupings of sensors such that they will be sampled together at roughly the same time. These defined groupings are referred to as probes. A probe is activated (sampled) according to a configuration provided to the Funf's scheduler. For example, a probe that senses motion can be triggered once every five seconds or whenever some specific event occurs (e.g., the press of the home button). Sensors can retrieve data from either physical or virtual sources (e.g., external temperature or memory consumption). In general, there are two types of sensors: PUSH and PULL. PUSH sensors are event-based, such as sensing when an SMS arrives or when the screen is turned on. PULL sensors are collected periodically, such as by sampling the CPU utilization or the device's acceleration.
-            </p>
-          </div>
-          <div class="c12">
-            <p>
-              The data collected by SherLock is stored temporarily on the volunteer's device as a text file in JSON format. Once the file reaches 500MB, it is zipped to ~50MB. Eventually, once the user connects to WiFi, all of the zip files temporarily stored on the device are uploaded to our server.
-</p>
-</div>
-      </div>
-
-
-            <div class="row  markdown-body">
-
-                <div class="c12">
-                  <p>
-<b>Probes.</b> SherLock has seven probes for the PUSH sensors and five probes for the PULL sensors, described in Tables \ref{tab:D_PUSH} and \ref{tab:D_PULL} below. Overall, there are many sensors divided amongst just a few probes. The probes were planned this way in order to fuse as many sensor records as possible to individual timestamps. This approach is advantageous when dealing with a large time series datasets because it minimizes the number of JOIN operations required on the final database when producing datasets.
-                  </p>
-                </div>
-                <div class="c12">
-                  <p>
-The most frequently sampled PULL probe is T4, sampled once every five seconds. Each time the T4 probe is triggered, three software sensors are sampled. One sensor collects global features on the device's utilization and statistics down to the Linux level. The second collects statistics and Linux level features from each running application. The third collects features regarding the battery and power consumption. The Linux level features are obtained from the Linux virtual /proc directory which is accessible on unrooted Android phones. The information collected by T4's three sensors can be found in Table \ref{tab:D_T4} below.
-      </p>
-      </div>
-            </div>
-
-
-            <div class="row  markdown-body">
-                <div class="c12">
-                  <h2> Moriarty</h2>
-                </div>
-                <div class="c12">
-                  <p>
-<b>Framework.</b> Moriarty is an agent that perpetrates attacks on the user's device while creating labels for the SherLock dataset. The attacks perpetrated by Moriarty are based on the following attack model: (1) A benign application is either initially given or repackaged to include additional code (spyware or some other malware). (2) The victim installs the app from a marketplace without realizing the consequences of the requested permissions. Given this model, we note that Moriarty does not need to exploit vulnerabilities on the device in order to perform its malicious activities.
-                  </p>
-                </div>
-
-            </div>
-
-            <div class="row  markdown-body">
-
-                <div class="c12">
-                  <p>
-In terms of its framework, Moriarty is a benign application to which a malicious behavior has been added, for example, a puzzle game that steals the user's contacts. Every few weeks Moriarty is updated to a new version (app + behavior) via the Google Play store. If the user forgets to use the Moriarty application for three days, then SherLock reminds the user to do so. For ethical reasons, each version of Moriarty does not contain actual malware code from the wild but rather contains a behavioral copy of a malware sample found in the wild. In order to protect the volunteer's privacy, all data sent by Moriarty over the Internet is scrambled (corrupted) before transmission.
-                  </p>
-                </div>
-                <div class="c12">
-                  <p>
-All volunteers were required to open and use Moriarty once every few days.
-      </p>
-      </div>
-      <div class="c12">
-        <p>
-Table \ref{tab:MoriartyVers} presents the versions of Moriarty that have been released so far. The table also lists the malwares taken from the wild on which each version is based. In total, there will be at least 12 versions of Moriarty by the end of 2016. Note that v10 does not follow the attack model since it is an experiment platform for capturing device theft behaviors. In that version the volunteer has a friend “steal” and use the in various manners. The labels recorded by Moriarty in this version indicate the moment the device was stolen.
-</p>
-</div>
-            </div>
+        </div>
 
     </div>
+
+    <div class="row  markdown-body">
+
+        <div class="c12">
+            <p>
+                In the Funf framework, monitorable features are referred to as sensors. Funf allows for developers to define groupings of sensors such that they will be sampled together at roughly the same time. These defined groupings are referred to as probes. A
+                probe is activated (sampled) according to a configuration provided to the Funf's scheduler. For example, a probe that senses motion can be triggered once every five seconds or whenever some specific event occurs (e.g., the press of the home button).
+                Sensors can retrieve data from either physical or virtual sources (e.g., external temperature or memory consumption). In general, there are two types of sensors: PUSH and PULL. PUSH sensors are event-based, such as sensing when an SMS arrives or when
+                the screen is turned on. PULL sensors are collected periodically, such as by sampling the CPU utilization or the device's acceleration.
+            </p>
+        </div>
+        <div class="c12">
+            <p>
+                The data collected by SherLock is stored temporarily on the volunteer's device as a text file in JSON format. Once the file reaches 500MB, it is zipped to ~50MB. Eventually, once the user connects to WiFi, all of the zip files temporarily stored on
+                the device are uploaded to our server.
+            </p>
+        </div>
+    </div>
+
+    <div class="row  markdown-body">
+
+        <div class="c12">
+            <p>
+                <b>Probes.</b>
+                SherLock has seven probes for the PUSH sensors and five probes for the PULL sensors, described in Tables \ref{tab:D_PUSH} and \ref{tab:D_PULL} below. Overall, there are many sensors divided amongst just a few probes. The probes were planned this way
+                in order to fuse as many sensor records as possible to individual timestamps. This approach is advantageous when dealing with a large time series datasets because it minimizes the number of JOIN operations required on the final database when
+                producing datasets.
+            </p>
+        </div>
+        <div class="c12">
+            <p>
+                The most frequently sampled PULL probe is T4, sampled once every five seconds. Each time the T4 probe is triggered, three software sensors are sampled. One sensor collects global features on the device's utilization and statistics down to the Linux
+                level. The second collects statistics and Linux level features from each running application. The third collects features regarding the battery and power consumption. The Linux level features are obtained from the Linux virtual /proc directory which
+                is accessible on unrooted Android phones. The information collected by T4's three sensors can be found in Table \ref{tab:D_T4} below.
+            </p>
+        </div>
+    </div>
+
+    <div class="row  markdown-body">
+        <div class="c12">
+            <h2>
+                Moriarty</h2>
+        </div>
+        <div class="c12">
+            <p>
+                <b>Framework.</b>
+                Moriarty is an agent that perpetrates attacks on the user's device while creating labels for the SherLock dataset. The attacks perpetrated by Moriarty are based on the following attack model: (1) A benign application is either initially given or
+                repackaged to include additional code (spyware or some other malware). (2) The victim installs the app from a marketplace without realizing the consequences of the requested permissions. Given this model, we note that Moriarty does not need to
+                exploit vulnerabilities on the device in order to perform its malicious activities.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row  markdown-body">
+
+        <div class="c12">
+            <p>
+                In terms of its framework, Moriarty is a benign application to which a malicious behavior has been added, for example, a puzzle game that steals the user's contacts. Every few weeks Moriarty is updated to a new version (app + behavior) via the Google
+                Play store. If the user forgets to use the Moriarty application for three days, then SherLock reminds the user to do so. For ethical reasons, each version of Moriarty does not contain actual malware code from the wild but rather contains a behavioral
+                copy of a malware sample found in the wild. In order to protect the volunteer's privacy, all data sent by Moriarty over the Internet is scrambled (corrupted) before transmission.
+            </p>
+        </div>
+        <div class="c12">
+            <p>
+                All volunteers were required to open and use Moriarty once every few days.
+            </p>
+        </div>
+        <div class="c12">
+            <p>
+                Table \ref{tab:MoriartyVers} presents the versions of Moriarty that have been released so far. The table also lists the malwares taken from the wild on which each version is based. In total, there will be at least 12 versions of Moriarty by the end
+                of 2016. Note that v10 does not follow the attack model since it is an experiment platform for capturing device theft behaviors. In that version the volunteer has a friend “steal” and use the in various manners. The labels recorded by Moriarty in
+                this version indicate the moment the device was stolen.
+            </p>
+        </div>
+    </div>
+
+    <div class="row  markdown-body">
+        <div class="c3"></div>
+        <div class="c6">
+            <img class="img-responsive" id="dataset1" name="dataset1" src="assets/img/dataset_1.png"/>
+            <small>Figure \label{fig:MorLabsData}. The Moriarty releases for 2016.</small>
+        </div>
+        <div class="c3"></div>
+        <div class="c12 clear">
+            <p>
+                <b>Clues.</b>
+                The explicit labels Moriarty creates for the SherLock dataset are referred to as clues. Moriarty creates a clue for each significant benign and malicious action it performs. A benign action is one which the application does as part of its regular
+                usage (e.g., a game makes a new view).
+
+            </p>
+        </div>
+        <div class="c12">
+            <p>
+                While Moriarty is running, it can be in one of two modes: malicious or benign. While in malicious mode Moriarty performs its malicious activities in parallel with its benign activities. In benign mode, Moriarty only performs benign activities. The
+                purpose of the benign mode is to provide clean (normal) data that can be separated and used as a comparative dataset during the development of anomaly detection algorithms. If Moriarty's malicious behavior runs as a background service, the mode
+                changes every 24 hours; otherwise it toggles each time the user runs the application
+            </p>
+        </div>
+
+        <div class="c12">
+            <p>
+                A session is the duration that Moriarty is in benign mode or malicious mode. All clues recorded during a session are given a session ID. The session ID can be used to extract the desired mode or behavior from the time series data. In cases where
+                Moriarty has two malware behaviors (i.e.,v2, v8 and v11) each behavior is performed in different sessions (i.e., they do not overlap in time).
+            </p>
+        </div>
+
+        <div class="c12">
+            <p>
+                In Figure \ref{fig:SampleClues} examples of clues from Moriarty v3 are displayed. In this version, Moriarty was a widget that displayed the current CPU and memory utilization to the user while covertly taking front-facing photos, stealing photos from
+                storage, and sending them offsite. The trace of the three clues belongs to a single session that is malicious. Note that in the first clue the SessionType is malicious, but the Action itself is benign (i.e., part of the application's legitimate
+                behavior). The Details field elaborates on the action taken and sometimes includes specifics such as the traffic volume, duration, message content, and so on. All of these fields are parsed into the final SherLock dataset.
+            </p>
+        </div>
+    </div>
+
+    <div class="row  markdown-body">
+        <div class="c3"></div>
+        <div class="c6">
+            <img class="img-responsive" id="dataset2" name="dataset2" src="assets/img/dataset_2.png"/>
+            <small>Figure \label{fig:SampleClues}. Three examples of clues left by Moriarty v3.</small>
+        </div>
+        <div class="c3"></div>
+    </div>
+    <div class="row clear markdown-body">
+        <div class="c12">
+            <h2>
+                Version Timeline
+            </h2>
+        </div>
+        <div class="c12">
+            <img class="img-responsive" id="dataset3" name="dataset3" src="assets/img/dataset_3.png"/>
+            <small>
+                Figure \ref{fig:timeline}. A timeline that summarizes the phases, major events, and agent version releases during the data collection experiment.
+            </small>
+        </div>
+
+        <div class="c12 clear">
+            <p>
+                The data collection experiment was divided into four phases: Pilot, Stage 1, Stage 2, and Upkeep (Figure \ref{fig:timeline}). In the Pilot phase, seven volunteers were provided with Galaxy S4 devices and initial prototypes were distributed and
+                iteratively improved. In Stage 1, 30 volunteers were provided with a stable version of SherLock and a Galaxy S5 smartphone. At first, the volunteers were provided with a battery case that extended the internal battery, and a few months later they
+                were provided with additional battery cases that charge the internal battery from an external battery. These technical differences are important to note, because the latter case charges the phone's internal battery as if it were plugged in to the
+                wall, and thus affects the power consumption statistics.
+            </p>
+        </div>
+
+        <div class="c12 ">
+            <p>
+                In Stage 2, Moriarty was deployed and 20 additional volunteers were added (for a total of 50 Galaxy S5 devices). Both agents were then managed through the Google Play store as opposed to manual APK updates. At that point all volunteers were supplied
+                with a higher quality battery case that extends the internal battery (Zerolemon 8500MAh). In the Upkeep phase, further updates to SherLock and Moriarty will be sparse, but the data collection will continue until at least January 2018 (for a total of
+                three years of data collection).
+            </p>
+        </div>
+    </div>
+    <div class="row  markdown-body">
+        <div class="c3"></div>
+        <div class="c6 text-center">
+            <img style="max-width:25%" class="img-responsive" id="dataset4" name="dataset4" src="assets/img/dataset_4.png"/>
+            <br><small>Figure \ref{bat}. The ZeroLemon battery case used in the experiment.</small>
+        </div>
+        <div class="c3"></div>
+        <div class="c12 clear">
+            <p>
+                During Stages 1 and 2, SherLock was updated several times. These updates were performed to fix bugs, improve stability, and add new probes/sensors. A detailed version history for both Moriarty and SherLock is available with the dataset.
+            </p>
+        </div>
+        <div class="c12">
+            <p>
+                A detailed list of changes for each version is avalaible for the
+                <a href=": https://docs.google.com/spreadsheets/d/1N8f-jbf9931pPqLcX3ELietz7qE2DopDqBOCqwsf_pM/edit?usp=sharing" target="_blank">Sherlock data collection agent</a>, and the
+                <a href="https://drive.google.com/drive/folders/0B_A1qX1kf7R9UEkyRGlCbEluNVU?usp=sharing" target="_blank">Moriarty malicious agent</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class="row markdown-body">
+        <div class="c12">
+            <h1>
+                The SherLock Dataset
+            </h1>
+        </div>
+
+        <div class="c12">
+            <h2>
+                Overview
+            </h2>
+        </div>
+
+        <div class="c12">
+            <p>
+                The SherLock dataset is organized into data tables, one for each SherLock probe (Tables \ref{tab:D_PUSH} and \ref{tab:D_PULL}). Some of the sensors belonging to these probes return a variable number of records when they are sampled -- specifically,
+                the WiFi, Bluetooth, and Local App Stats sensors, since they perform surveys over a variable number of entities. The data records from these sensors cannot be stored in the data tables of their parent probes. Therefore the data from these sensors are
+                stored in separate tables.
+            </p>
+        </div>
+
+        <div class="c12">
+            <p>
+                Every data table has the fields uuid, userid, and version. uuid is the Unix millisecond timestamp of when the record was collected. userid is a unique identifier for the volunteer to whom the record belongs. Finally, \texttt{version} is the agent's
+                software release code (see Figure \ref{fig:timeline}). The SherLock's 15 data tables with their number of records from August 2016 are listed in Table \ref{tab:dataTables}. Note that the SherLock data collection experiment is on-going and slated to
+                end at earliest in December 2016.
+            </p>
+        </div>
+    </div>
+    <div class="row  markdown-body">
+        <div class="c4"></div>
+        <div class="c4">
+            <img class="img-responsive" id="dataset5" name="dataset5" src="assets/img/dataset_5.png"/>
+            <br><small>Table \label{tab:dataTables}. The data tables and number of data records in the SherLock dataset as of August 2016.</small>
+        </div>
+        <div class="c4"></div>
+      </div>
+
+      <div class="row  markdown-body">
+          <div class="c2"></div>
+          <div class="c8">
+              <img class="img-responsive" id="dataset6" name="dataset6" src="assets/img/dataset_6.png"/>
+              <br><small>
+Table \ref{tab:D_PUSH}. A description of the PUSH probes and their contents
+              </small>
+          </div>
+          <div class="c2"></div>
+        </div>
+
+        <div class="row  markdown-body">
+            <div class="c2"></div>
+            <div class="c8">
+                <img class="img-responsive" id="dataset7" name="dataset7" src="assets/img/dataset_7.png"/>
+                <br><small>
+Table \ref{tab:D_PULL}. A description of the PULL probes and their contents.
+                </small>
+            </div>
+            <div class="c2"></div>
+          </div>
+
+          <div class="row  markdown-body">
+              <div class="c2"></div>
+              <div class="c8">
+                  <img class="img-responsive" id="dataset8" name="dataset8" src="assets/img/dataset_8.png"/>
+                  <br><small>
+Table \ref{tab:D_T4_APP}. The data points collected by probe T4 every 5 seconds.
+                  </small>
+              </div>
+              <div class="c2"></div>
+            </div>
+
+              <div class="row  markdown-body">
+<div class="c12">
+<h2>
+Ethical Concerns
+</h2>
+</div>
+<div class="c12">
+  <p>
+    The SherLock data collection experiment has passed Ben-Gurion University's Ethics Committee. To protect the privacy of our volunteers, several concerns were addressed.
+</p>
+</div>
+              </div>
+
+              <div class="row  markdown-body">
+<div class="c12">
+
+<p>
+<b>Identifiers.</b> We have received permission from the volunteers to allow others to use their data for research, provided that we anonymize their data. Therefore, network identifiers such as SSIDs, cell tower IDs, and MAC addresses have been hashed. Moreover, the phone numbers in the SMS and call logs have been hashed as well.
+</p>
+</div>
+<div class="c12">
+  <p>
+<b>Geolocation.</b> The geolocation of each volunteer has been anonymized by performing k-means clustering over the volunteer's longitude, latitude, and altitude. This approach is a method that achieves k-anonymity via generalization. This means that those who receive the dataset will have the volunteer's location in terms of cluster IDs. In order to provide various degrees of granularity, we repeated the clustering for k={5,10,25,50,75,100}.
+Table \ref{tab:STclus} presents the various granularities made available in the public dataset.
+</p>
+</div>
+              </div>
+
+              <div class="row  markdown-body">
+                  <div class="c3"></div>
+                  <div class="c6">
+                      <img class="img-responsive" id="dataset9" name="dataset9" src="assets/img/dataset_9.png"/>
+                      <br><small>
+Table \label{tab:STclus}. The anonymous geolocation information available in the SherLock dataset (the T1 probe).
+                      </small>
+                  </div>
+                  <div class="c3"></div>
+
+                  <div class="c12 clear">
+                    <p>
+                      Time has a contextual importance to a user's geolocation. For example, being at work on the weekend is a different situation than being at work during the week. To provide this spatio-temporal information in an anonymous manner, we provide additional clusterings using both geolocation and temporal features with k={5,25,100}. Specifically, the temporal features we consider are cyclic time of day, and week. For more information on the cyclic features and how they were calculated please see our paper.
+</p>
+</div>
+                </div>
+
+
+                <div class="row  markdown-body">
+
+
+                    <div class="c12 ">
+        <h2>
+          Data Fields
+        </h2>
+
+
+  </div>
+  <div class="c12">
+<p>
+  Below you will find a detailed description of every data field in the SherLock dataset. The contents below are organized according to the tables in Table \label{tab:dataTables}.
+</p>
+  </div>
+                  </div>
+
+                  <div class="row  markdown-body">
+
+
+                      <div class="c12 ">
+          <h2>
+PUSH Sensor Tables
+          </h2>
+
+
+    </div>
+    <div class="c12">
+  <p>
+Coming soon…
+  </p>
+    </div>
+                    </div>
+
+
+                    <div class="row  markdown-body">
+
+
+                        <div class="c12 ">
+            <h2>
+Volunteer Survey
+            </h2>
+
+
+      </div>
+      <div class="c12">
+    <p>
+The volunteers were also asked to complete a survey. The survey contained 118 questions about the volunteer's daily life, device usage, and security awareness. A sample of the results is presented in Figure \ref{fig:survey}. The complete survey is avalaible when <a href="#/download">downloading the dataset</a>.
+    </p>
+      </div>
+      <div class="c3"></div>
+      <div class="c6">
+          <img class="img-responsive" id="dataset10" name="dataset10" src="assets/img/dataset_10.png"/>
+          <br><small>
+Figure \ref{fig:survey}. Sample results from the volunteer survey.
+          </small>
+      </div>
+      <div class="c3"></div>
+
+                      </div>
+</div>
