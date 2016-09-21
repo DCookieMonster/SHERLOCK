@@ -55,7 +55,7 @@
         <div class="c12">
             <p>
                 <b>Probes.</b>
-                SherLock has seven probes for the PUSH sensors and five probes for the PULL sensors, described in Tables \ref{tab:D_PUSH} and \ref{tab:D_PULL} below. Overall, there are many sensors divided amongst just a few probes. The probes were planned this way
+                SherLock has seven probes for the PUSH sensors and five probes for the PULL sensors, described in Tables <a ng-click="scrollTo('dataset6')" href="">2</a> and <a ng-click="scrollTo('dataset7')" href="">3</a> below. Overall, there are many sensors divided amongst just a few probes. The probes were planned this way
                 in order to fuse as many sensor records as possible to individual timestamps. This approach is advantageous when dealing with a large time series datasets because it minimizes the number of JOIN operations required on the final database when
                 producing datasets.
             </p>
@@ -112,7 +112,7 @@
         <div class="c3"></div>
         <div class="c6">
             <img class="img-responsive" id="dataset1" name="dataset1" src="assets/img/dataset_1.png"/>
-            <small>Figure \label{fig:MorLabsData}. The Moriarty releases for 2016.</small>
+            <small>Figure 1. The Moriarty releases for 2016.</small>
         </div>
         <div class="c3"></div>
         <div class="c12 clear">
@@ -140,7 +140,7 @@
 
         <div class="c12">
             <p>
-                In Figure \ref{fig:SampleClues} examples of clues from Moriarty v3 are displayed. In this version, Moriarty was a widget that displayed the current CPU and memory utilization to the user while covertly taking front-facing photos, stealing photos from
+                In Figure <a ng-click="scrollTo('dataset2')" href="">2</a> examples of clues from Moriarty v3 are displayed. In this version, Moriarty was a widget that displayed the current CPU and memory utilization to the user while covertly taking front-facing photos, stealing photos from
                 storage, and sending them offsite. The trace of the three clues belongs to a single session that is malicious. Note that in the first clue the SessionType is malicious, but the Action itself is benign (i.e., part of the application's legitimate
                 behavior). The Details field elaborates on the action taken and sometimes includes specifics such as the traffic volume, duration, message content, and so on. All of these fields are parsed into the final SherLock dataset.
             </p>
@@ -151,7 +151,7 @@
         <div class="c3"></div>
         <div class="c6">
             <img class="img-responsive" id="dataset2" name="dataset2" src="assets/img/dataset_2.png"/>
-            <small>Figure \label{fig:SampleClues}. Three examples of clues left by Moriarty v3.</small>
+            <small>Figure 2. Three examples of clues left by Moriarty v3.</small>
         </div>
         <div class="c3"></div>
     </div>
@@ -164,13 +164,13 @@
         <div class="c12">
             <img class="img-responsive" id="dataset3" name="dataset3" src="assets/img/dataset_3.png"/>
             <small>
-                Figure \ref{fig:timeline}. A timeline that summarizes the phases, major events, and agent version releases during the data collection experiment.
+                Figure 3. A timeline that summarizes the phases, major events, and agent version releases during the data collection experiment.
             </small>
         </div>
 
         <div class="c12 clear">
             <p>
-                The data collection experiment was divided into four phases: Pilot, Stage 1, Stage 2, and Upkeep (Figure \ref{fig:timeline}). In the Pilot phase, seven volunteers were provided with Galaxy S4 devices and initial prototypes were distributed and
+                The data collection experiment was divided into four phases: Pilot, Stage 1, Stage 2, and Upkeep (Figure <a ng-click="scrollTo('dataset3')" href="">3</a>). In the Pilot phase, seven volunteers were provided with Galaxy S4 devices and initial prototypes were distributed and
                 iteratively improved. In Stage 1, 30 volunteers were provided with a stable version of SherLock and a Galaxy S5 smartphone. At first, the volunteers were provided with a battery case that extended the internal battery, and a few months later they
                 were provided with additional battery cases that charge the internal battery from an external battery. These technical differences are important to note, because the latter case charges the phone's internal battery as if it were plugged in to the
                 wall, and thus affects the power consumption statistics.
@@ -189,7 +189,7 @@
         <div class="c3"></div>
         <div class="c6 text-center">
             <img style="max-width:25%" class="img-responsive" id="dataset4" name="dataset4" src="assets/img/dataset_4.png"/>
-            <br><small>Figure \ref{bat}. The ZeroLemon battery case used in the experiment.</small>
+            <br><small>Figure 4. The ZeroLemon battery case used in the experiment.</small>
         </div>
         <div class="c3"></div>
         <div class="c12 clear">
@@ -221,7 +221,7 @@
 
         <div class="c12">
             <p>
-                The SherLock dataset is organized into data tables, one for each SherLock probe (Tables \ref{tab:D_PUSH} and \ref{tab:D_PULL}). Some of the sensors belonging to these probes return a variable number of records when they are sampled -- specifically,
+                The SherLock dataset is organized into data tables, one for each SherLock probe (Tables <a ng-click="scrollTo('dataset6')" href="">2</a> and  <a ng-click="scrollTo('dataset7')" href="">3</a>). Some of the sensors belonging to these probes return a variable number of records when they are sampled -- specifically,
                 the WiFi, Bluetooth, and Local App Stats sensors, since they perform surveys over a variable number of entities. The data records from these sensors cannot be stored in the data tables of their parent probes. Therefore the data from these sensors are
                 stored in separate tables.
             </p>
@@ -230,7 +230,7 @@
         <div class="c12">
             <p>
                 Every data table has the fields uuid, userid, and version. uuid is the Unix millisecond timestamp of when the record was collected. userid is a unique identifier for the volunteer to whom the record belongs. Finally, \texttt{version} is the agent's
-                software release code (see Figure \ref{fig:timeline}). The SherLock's 15 data tables with their number of records from August 2016 are listed in Table \ref{tab:dataTables}. Note that the SherLock data collection experiment is on-going and slated to
+                software release code (see Figure <a ng-click="scrollTo('dataset3')" href="">3</a>). The SherLock's 15 data tables with their number of records from August 2016 are listed in Table <a ng-click="scrollTo('dataset5')" href="">1</a>. Note that the SherLock data collection experiment is on-going and slated to
                 end at earliest in December 2016.
             </p>
         </div>
@@ -239,7 +239,7 @@
         <div class="c4"></div>
         <div class="c4">
             <img class="img-responsive" id="dataset5" name="dataset5" src="assets/img/dataset_5.png"/>
-            <br><small>Table \label{tab:dataTables}. The data tables and number of data records in the SherLock dataset as of August 2016.</small>
+            <br><small>Table 1. The data tables and number of data records in the SherLock dataset as of August 2016.</small>
         </div>
         <div class="c4"></div>
       </div>
@@ -249,7 +249,7 @@
           <div class="c8">
               <img class="img-responsive" id="dataset6" name="dataset6" src="assets/img/dataset_6.png"/>
               <br><small>
-Table \ref{tab:D_PUSH}. A description of the PUSH probes and their contents
+Table 2. A description of the PUSH probes and their contents
               </small>
           </div>
           <div class="c2"></div>
@@ -260,7 +260,7 @@ Table \ref{tab:D_PUSH}. A description of the PUSH probes and their contents
             <div class="c8">
                 <img class="img-responsive" id="dataset7" name="dataset7" src="assets/img/dataset_7.png"/>
                 <br><small>
-Table \ref{tab:D_PULL}. A description of the PULL probes and their contents.
+Table 3. A description of the PULL probes and their contents.
                 </small>
             </div>
             <div class="c2"></div>
@@ -271,7 +271,7 @@ Table \ref{tab:D_PULL}. A description of the PULL probes and their contents.
               <div class="c8">
                   <img class="img-responsive" id="dataset8" name="dataset8" src="assets/img/dataset_8.png"/>
                   <br><small>
-Table \ref{tab:D_T4_APP}. The data points collected by probe T4 every 5 seconds.
+Table 4. The data points collected by probe T4 every 5 seconds.
                   </small>
               </div>
               <div class="c2"></div>
@@ -300,7 +300,7 @@ Ethical Concerns
 <div class="c12">
   <p>
 <b>Geolocation.</b> The geolocation of each volunteer has been anonymized by performing k-means clustering over the volunteer's longitude, latitude, and altitude. This approach is a method that achieves k-anonymity via generalization. This means that those who receive the dataset will have the volunteer's location in terms of cluster IDs. In order to provide various degrees of granularity, we repeated the clustering for k={5,10,25,50,75,100}.
-Table \ref{tab:STclus} presents the various granularities made available in the public dataset.
+Table <a ng-click="scrollTo('dataset9')" href="">5</a> presents the various granularities made available in the public dataset.
 </p>
 </div>
               </div>
@@ -310,7 +310,7 @@ Table \ref{tab:STclus} presents the various granularities made available in the 
                   <div class="c6">
                       <img class="img-responsive" id="dataset9" name="dataset9" src="assets/img/dataset_9.png"/>
                       <br><small>
-Table \label{tab:STclus}. The anonymous geolocation information available in the SherLock dataset (the T1 probe).
+Table 5. The anonymous geolocation information available in the SherLock dataset (the T1 probe).
                       </small>
                   </div>
                   <div class="c3"></div>
@@ -335,7 +335,7 @@ Table \label{tab:STclus}. The anonymous geolocation information available in the
   </div>
   <div class="c12">
 <p>
-  Below you will find a detailed description of every data field in the SherLock dataset. The contents below are organized according to the tables in Table \label{tab:dataTables}.
+  Below you will find a detailed description of every data field in the SherLock dataset. The contents below are organized according to the tables in Table <a ng-click="scrollTo('dataset5')" href="">1</a>.
 </p>
   </div>
                   </div>
@@ -370,14 +370,14 @@ Volunteer Survey
       </div>
       <div class="c12">
     <p>
-The volunteers were also asked to complete a survey. The survey contained 118 questions about the volunteer's daily life, device usage, and security awareness. A sample of the results is presented in Figure \ref{fig:survey}. The complete survey is avalaible when <a href="#/download">downloading the dataset</a>.
+The volunteers were also asked to complete a survey. The survey contained 118 questions about the volunteer's daily life, device usage, and security awareness. A sample of the results is presented in Figure <a href="dataset_10">5</a>. The complete survey is avalaible when <a href="#/download">downloading the dataset</a>.
     </p>
       </div>
       <div class="c3"></div>
       <div class="c6">
           <img class="img-responsive" id="dataset10" name="dataset10" src="assets/img/dataset_10.png"/>
           <br><small>
-Figure \ref{fig:survey}. Sample results from the volunteer survey.
+Figure 5. Sample results from the volunteer survey.
           </small>
       </div>
       <div class="c3"></div>

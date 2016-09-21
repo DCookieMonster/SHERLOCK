@@ -6,7 +6,7 @@
 PagesApp.controller('mainCtrl', ['$scope','$http', function($scope,$http) {
     window.scrollTo(0, 0);
     $('.nav-top').removeClass('active');
-    $('#home').addClass('active');
+    $('#home  ').addClass('active');
 }]);
 
 PagesApp.controller('teamCtrl', ['$scope','$http', function($scope,$http) {
@@ -18,10 +18,14 @@ PagesApp.controller('teamCtrl', ['$scope','$http', function($scope,$http) {
 }]);
 
 
-PagesApp.controller('datasetCtrl', ['$scope','$http', function($scope,$http) {
+PagesApp.controller('datasetCtrl', ['$scope','$http', '$location', '$anchorScroll', function($scope,$http, $location, $anchorScroll) {
     window.scrollTo(0, 0);
     $('.nav-top').removeClass('active');
     $('#dataset').addClass('active');
+    $scope.scrollTo = function(id) {
+     $location.hash(id);
+     $anchorScroll();
+  }
 }]);
 
 

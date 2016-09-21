@@ -106,3 +106,7 @@ a.btn.btnghost.btn-lg {
 a.btn.btnghost.btn-lg:hover {
     color: #fff;
 }
+
+p{
+	font-size: 18px;
+}
