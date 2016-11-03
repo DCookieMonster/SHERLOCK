@@ -8,6 +8,13 @@
 var PagesApp=angular.module('PagesApp', ['ngRoute','angular.filter', 'ngAnimate', 'ui.bootstrap','ngSanitize',
     'btford.markdown']);
 
+    PagesApp.run(function($rootScope, $location, $anchorScroll) {
+      //when the route is changed scroll to the proper element.
+      $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+        if($location.hash()) $anchorScroll();
+      });
+    });
+
 PagesApp.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
         $routeProvider.
